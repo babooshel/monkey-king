@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>MonkeyKing</h2>
+
+<button onclick="move()">Move</button>
+<pre id="out"></pre>
+
+<script>
+const API = "https://monkey-king.onrender.com/"
+
+async function move(){
+  const r = await fetch(API + "/move", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: "{}"
+  });
+  document.getElementById("out").innerText =
+    JSON.stringify(await r.json(), null, 2);
+}
+</script>
+</body>
+</html>
